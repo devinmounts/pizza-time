@@ -5,20 +5,13 @@ function Pizza (name, size, toppings, price){
   this.price = 0;
 }
 
-
-Pizza.prototype.Receipt = function() {
-  return "Thank you " + this.name + " here is your receipt for a " + this.size + "pizza, with" + this.toppings + " ."
+Pizza.prototype.toppingsToString = function(){
+  return this.toppings.join();
+}
+Pizza.prototype.receipt = function() {
+  return "Thank you " + this.name + " here is your receipt for a " + this.size + " pizza, with " + this.toppings + "."
   ;
 }
-//
-// Pizza.prototype.price = function() {
-//     var price = 0;
-//     var sizeTotal = pizzaSize(size, price);
-//     var toppingsTotal = pizzaToppings(toppings, price);
-//     price += sizeTotal + toppingsTotal;
-//     return price;
-// }
-
 
 Pizza.prototype.sizePrice = function() {
   if (this.size === "Small"){
@@ -33,18 +26,12 @@ Pizza.prototype.sizePrice = function() {
   return this.price;
 }
 
-Pizza.prototype.toppingsPrice = function () {
-  for (var i=0; i = toppings.length; i++) {
-    if (this.topping === 1){
-      this.price += 0;
-    }else if (this.topping > 0 && this.topping <= 3) {
-      this.price += 3;
-    }else if (this.topping >= 5) {
-      this.price += 5;
-    }else
-    return this.price
-  }
+Pizza.prototype.toppingsPrice = function() {
+  if (this.topping === "pepperoni") {
+      console.log("pepperoni");
+    }
 }
+
 
 $(function(){
 
@@ -59,9 +46,14 @@ $(function(){
      console.log(inputtedToppingsArray);
    var pizza = new Pizza(inputtedName, inputtedSize, inputtedToppingsArray)
    pizza.sizePrice();
+   pizza.toppingsToString();
    console.log(pizza);
+   pizza.toppingsPrice();
+
+
+
     $("#showName").text(pizza.name);
     $("#showSize").text(pizza.size);
-    $(".showOrder").text()
+    $(".showOrder").text(pizza.receipt());
   });
 });
