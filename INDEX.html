@@ -15,10 +15,15 @@
         <h1>Welcome to Papa's Pizza</h1>
         <h3>Order your pizza here!</h3>
       </div>
-      <form id="pizzaOrder">
+      <form>
+        <div class="form group">
+          <label>Enter Name</label>
+          <input type="text" name="name" id="inputName" placeholder="Name">
+        </div>
         <div class="form-group">
           <h2>Select your Size</h2>
-          <select class="form-control" id="pizzaSize">
+          <label>Size options</label>
+          <select class="form-control" id="inputSize">
             <option value="sm">Small</option>
             <option value="med">Medium</option>
             <option value="lg">Large</option>
@@ -33,9 +38,12 @@
           <input type="checkbox" name="toppings" value="basil">
           <input type="checkbox" name="toppings" value="canadian-bacon">
           <input type="checkbox" name="toppings" value="pineapple">
-
         </div>
+        <button id="submitOrder" type="submit" name="btn btn-success">Place your order</button>
       </form>
+    </div>
+    <div class="showOrder">
+
     </div>
   </body>
 </html>
