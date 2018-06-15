@@ -1,8 +1,8 @@
-function Pizza (name, price, size, toppings){
+function Pizza (name, size, toppings, price){
   this.name = name;
-  this.price = 0;
   this.size = size;
-  this.toppings = [];
+  this.toppings = toppings;
+  this.price = 0;
 }
 
 
@@ -55,14 +55,13 @@ $(function(){
     var inputtedSize = $("#inputSize").val();
     $("input:checkbox[name=inputTopping]:checked").each(function(){
       inputtedToppingsArray.push($(this).val());
-
-	   });
+    });
      console.log(inputtedToppingsArray);
    var pizza = new Pizza(inputtedName, inputtedSize, inputtedToppingsArray)
-   pizza.sizePrice();
+   console.log(pizza);
+   console.log(pizza);
     $("#showName").text(pizza.name);
     $("#showSize").text(pizza.size);
-    console.log(pizza);
     $(".showOrder").text()
   });
 });
