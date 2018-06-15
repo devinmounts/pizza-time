@@ -24,9 +24,11 @@ Pizza.prototype.sizePrice = function() {
 }
 
 Pizza.prototype.toppingsPrice = function() {
+  console.log("pepperoni");
   this.toppings.forEach(function(){
+
   if (this.topping === "cheese") {
-      console.log("pepperoni");
+
     }
   });
 }
