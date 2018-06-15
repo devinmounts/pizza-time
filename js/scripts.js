@@ -12,14 +12,15 @@ Pizza.prototype.name = function () {
 Pizza.prototype.size = function (size, price) {
   if (this.size === "sm"){
     this.price += 8;
-  // }else if (this.size === "med") {
-  //   this.price += 10;
-  // }else if (this.size === "lg") {
-  //   this.price  += 15;
-  // }else if (this.size === "xl") {
-  //   this.price += 18;
+  }else if (this.size === "med") {
+    this.price += 10;
+  }else if (this.size === "lg") {
+    this.price  += 15;
+  }else if (this.size === "xl") {
+    this.price += 18;
   }else
   return this.price;
+  console.log(this.price);
 }
 
 Pizza.prototype.toppings = function() {
@@ -27,11 +28,11 @@ Pizza.prototype.toppings = function() {
     if (this.toppings === 1){
       this.price += 0;
     }else if (this.toppings > 0 && this.toppings <= 3) {
-      cost = 3;
+      this.price += 3;
     }else if (this.toppings >= 5) {
-      cost = 5;
+      this.price += 5;
     }else
-    return cost
+    return this.price
   }
 }
 
@@ -44,13 +45,18 @@ $(function(){
   var pizza = new Pizza()
 
   $("#submitOrder").click(function(event){
-  event.preventDefault();
-  alert("Here");
-  console.log("here");
-  pizza.name = $("#inputName").val();
-  pizza.size = $("#inputSize").val();
-  console.log(pizza.name);
-  console.log(pizza.size);
-  $(".showOrder").text()
+    event.preventDefault();
+    pizza.name = $("#inputName").val();
+    pizza.size = $("#inputSize").val();
+    $("input:checkbox[name=inputTopping]:checked").each(function(){
+         var inputtedToppings = $(this).val();
+         // $('#work-responses').append(workTransportationMode + "<br>");
+         pizza.toppings = inputtedToppings
+       });
+
+    console.log(pizza.name);
+    console.log(pizza.size);
+    console.log(pizza.toppings);
+    $(".showOrder").text()
   });
 });
