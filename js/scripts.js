@@ -43,8 +43,9 @@ Pizza.prototype.price = function () {
 $(function(){
   var pizza = new Pizza()
 
-  $("#submitOrder").submit(function(e){
-  e.preventDefault();
+  $("#submitOrder").click(function(event){
+  event.preventDefault();
+  alert("Here");
   console.log("here");
   pizza.name = $("#inputName").val();
   pizza.size = $("#inputSize").val();
