@@ -21,13 +21,13 @@ Pizza.prototype.Receipt = function() {
 
 
 Pizza.prototype.sizePrice = function() {
-  if (this.size = "Small"){
+  if (this.size === "Small"){
     this.price += 8;
-  }else if (this.size = "Medium") {
+  }else if (this.size === "Medium") {
     this.price += 10;
-  }else if (this.size = "Large") {
+  }else if (this.size === "Large") {
     this.price  += 15;
-  }else if (this.size = "Extra Large") {
+  }else if (this.size === "Extra Large") {
     this.price += 18;
   }else
   return this.price;
@@ -58,7 +58,7 @@ $(function(){
     });
      console.log(inputtedToppingsArray);
    var pizza = new Pizza(inputtedName, inputtedSize, inputtedToppingsArray)
-   console.log(pizza);
+   pizza.sizePrice();
    console.log(pizza);
     $("#showName").text(pizza.name);
     $("#showSize").text(pizza.size);
