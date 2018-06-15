@@ -24,7 +24,7 @@ This website allows a user to order a pizza, selecting from various sizes and ad
 2. Open Index.html in a web browser.
 
 ## Known Bugs
-* 
+* Prototype function to influence cost based on toppings does not work.
 
 ## Technologies Used
 * Javascript
