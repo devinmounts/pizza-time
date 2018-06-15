@@ -48,12 +48,16 @@ $(function(){
     event.preventDefault();
     pizza.name = $("#inputName").val();
     pizza.size = $("#inputSize").val();
+    // $("input:checkbox[name=inputTopping]:checked").each(function(){
+    //      var inputtedToppings = $(this).val();
+    //      // $('#work-responses').append(workTransportationMode + "<br>");
+    //      pizza.toppings = inputtedToppings;
+    //      $("#showToppings").append("<li>"inputtedToppings"</li>");
+    //  });
     $("input:checkbox[name=inputTopping]:checked").each(function(){
-         var inputtedToppings = $(this).val();
-         // $('#work-responses').append(workTransportationMode + "<br>");
-         pizza.toppings = inputtedToppings
-       });
-
+  var inputtedToppings = $(this).val();
+  $("#showToppings").append("<li>" + inputtedToppings + "</li>");
+});
     console.log(pizza.name);
     console.log(pizza.size);
     console.log(pizza.toppings);
