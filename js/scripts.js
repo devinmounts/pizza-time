@@ -2,44 +2,49 @@ function Pizza (name, price, size, toppings){
   this.name = name;
   this.price = 0;
   this.size = size;
-  this.toppings = [];
+  this.toppings = toppings;
 }
 
-Pizza.prototype.name = function () {
-  return this.name;
+
+Pizza.prototype.Receipt = function () {
+  return "Thank you " + this.name + " here is your receipt for a " + this.size + "pizza, with" + this.toppings + " ."
+  ;
 }
 
-Pizza.prototype.size = function (size, price) {
-  if (this.size === "sm"){
-    this.price += 8;
-  }else if (this.size === "med") {
-    this.price += 10;
-  }else if (this.size === "lg") {
-    this.price  += 15;
-  }else if (this.size === "xl") {
-    this.price += 18;
+function pizzaPrice(input){
+    var price = 0;
+    var sizeTotal = pizzaSize(size, price);
+    var toppingsTotal = pizzaToppings(toppings, price);
+    price += sizeTotal + toppingsTotal;
+    return price;
+}
+
+
+function pizzaSize (size, value) {
+  if (size = "small"){
+    value += 8;
+  }else if (size = "medium") {
+    value += 10;
+  }else if (size = "large") {
+    value  += 15;
+  }else if (size = "Extra Large") {
+    value += 18;
   }else
-  return this.price;
-  console.log(this.price);
+  return value;
 }
 
-Pizza.prototype.toppings = function() {
+function pizzaToppings (toppings, value) {
   for (var i=0; i = toppings.length; i++) {
-    if (this.toppings === 1){
-      this.price += 0;
-    }else if (this.toppings > 0 && this.toppings <= 3) {
-      this.price += 3;
-    }else if (this.toppings >= 5) {
-      this.price += 5;
+    if (toppings === 1){
+      value += 0;
+    }else if (toppings > 0 && toppings <= 3) {
+      value += 3;
+    }else if (toppings >= 5) {
+      value += 5;
     }else
-    return this.price
+    return value
   }
 }
-
-Pizza.prototype.price = function () {
-  return this.price
-}
-
 
 $(function(){
   var pizza = new Pizza()
@@ -48,19 +53,14 @@ $(function(){
     event.preventDefault();
     pizza.name = $("#inputName").val();
     pizza.size = $("#inputSize").val();
-    // $("input:checkbox[name=inputTopping]:checked").each(function(){
-    //      var inputtedToppings = $(this).val();
-    //      // $('#work-responses').append(workTransportationMode + "<br>");
-    //      pizza.toppings = inputtedToppings;
-    //      $("#showToppings").append("<li>"inputtedToppings"</li>");
-    //  });
     $("input:checkbox[name=inputTopping]:checked").each(function(){
-  var inputtedToppings = $(this).val();
-  $("#showToppings").append("<li>" + inputtedToppings + "</li>");
-});
-    console.log(pizza.name);
-    console.log(pizza.size);
-    console.log(pizza.toppings);
+      var inputtedToppings = $(this).val();
+        $("#showToppings").append("<li>" + inputtedToppings + "</li>");
+    });
+    $("#showName").text(pizza.name);
+    $("#showSize").text(pizza.size);
+    pizza.pizzaSize();
+    console.log(pizza);
     $(".showOrder").text()
   });
 });
