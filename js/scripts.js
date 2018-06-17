@@ -24,11 +24,15 @@ Pizza.prototype.sizePrice = function() {
 }
 
 Pizza.prototype.toppingsPrice = function() {
-  console.log("pepperoni");
-  this.toppings.forEach(function(){
-
-  if (this.topping === "cheese") {
-
+  this.toppings.forEach(function(topping){
+    if (topping === "basil"){
+      console.log(this.price);
+      this.price += 5;
+      console.log("here");
+      console.log(this.price);
+    }else {
+      return this.price;
+      console.log(this.price);
     }
   });
 }
@@ -49,11 +53,6 @@ $(function(){
    pizza.sizePrice();
    pizza.toppingsPrice();
    console.log(pizza)
-
-
-
-    $("#showName").text(pizza.name);
-    $("#showSize").text(pizza.size);
     $("#showOrder").text(pizza.receipt());
   });
 });
