@@ -1,0 +1,9 @@
+.container {
+  background-image: url("img/pizza.jpg");
+  background-color: ;
+}
+
+body {
+    background-image: url(".../img/pizza.png");
+    background-color: ;
+}

@@ -61,6 +61,35 @@ function finalPrice(pie) {
   return price;
 }
 
+Pizza.prototype.sizePrice = function() {
+  if (this.size === "Small"){
+    this.price += 8;
+  }else if (this.size === "Medium") {
+    this.price += 10;
+  }else if (this.size === "Large") {
+    this.price  += 15;
+  }else if (this.size === "Extra Large") {
+    this.price += 18;
+  }else
+  return this.price;
+}
+
+Pizza.prototype.toppingsPrice = function() {
+  if (this.toppings.includes("basil")){
+    this.price += 5;
+  }
+  if (this.toppings.includes("pepperoni") || this.toppings.includes("tomatoes")){
+      this.price += 5;
+  }
+  if (this.toppings.includes("canadian-bacon") || this.toppings.includes("pineapple")){
+        this.price += 5;
+    console.log(this.price);
+  }else {
+    return this.price;
+    console.log(this.price);
+  }
+}
+
 $(function(){
 
   $("#submitOrder").click(function(event){
@@ -72,7 +101,10 @@ $(function(){
       inputtedToppingsArray.push($(this).val());
     });
    var pie = new Pizza(inputtedName, inputtedSize, inputtedToppingsArray);
-   pie.price = finalPrice(pie);
+   // pie.price = finalPrice(pie);
+   pie.sizePrice();
+   pie.toppingsPrice();
+   console.log(pie);
     $("#showOrder").text(pie.receipt());
   });
 });
